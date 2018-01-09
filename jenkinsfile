@@ -1,1 +1,22 @@
+node {
+stage('checkout') {
+checkout([$class: 'GitSCM', branches: [[name: '*/master']], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[credentialsId: '78bf7588-0e63-4171-bdf0-673910b6e365', url: 'https://github.com/Nasrin224/pipeline-example.git']]])
+}
+stage('build') {
+    // some block
+    sh 'mvn clean package'
+}
+stage('test') {
+    // some block
+    sh 'mvn test'
+}
+stage('sonar code coverage') {
+    // some block
+    
+}
+stage('results') {
+    // some block
+    echo ' results generated'
+}
 
+}
